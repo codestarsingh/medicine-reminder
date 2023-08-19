@@ -1,0 +1,22 @@
+header {
+background-color: #272829;
+margin-bottom: 50px;
+padding: 12px 32px;
+box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+font-family: "McLaren", cursive;
+}
+  
+header h1 {
+color: #fff;
+font-family: "McLaren", cursive;
+font-weight: 200;
+display: inline;
+}
+
+.register {
+text-decoration: none;
+position: absolute;
+padding-top: 10px;
+padding-left: 1060px;
+color: white;
+}
