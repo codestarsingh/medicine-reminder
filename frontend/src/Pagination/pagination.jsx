@@ -1,5 +1,5 @@
-import React from "react";
-import "./pagination.css";
+import React from 'react';
+import './pagination.css';
 
 const Pagination = ({ patientsPerPage, totalPatients, paginate }) => {
   const pageNumbers = [];
@@ -9,11 +9,11 @@ const Pagination = ({ patientsPerPage, totalPatients, paginate }) => {
   }
 
   return (
-    <div className="pagination-container">
-      <ul className="pagination">
+    <div className='pagination-container'>
+      <ul className='pagination'>
         {pageNumbers.map((number) => (
-          <li key={number} className="page-item">
-            <button onClick={() => paginate(number)} className="page-link">
+          <li key={number} className='page-item'>
+            <button onClick={() => paginate(number)} className='page-link'>
               {number}
             </button>
           </li>
