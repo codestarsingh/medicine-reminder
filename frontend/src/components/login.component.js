@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './x.css';
 
 export default class Login extends Component {
   constructor(props) {
@@ -30,9 +31,10 @@ export default class Login extends Component {
       .then((data) => {
         console.log(data, 'userRegister');
         if (data.status == 'ok') {
-          alert('login successful');
           window.localStorage.setItem('token', data.data);
           window.location.href = './dashboard';
+        }else {
+          alert('Invalid admin');
         }
       });
   }
@@ -40,10 +42,10 @@ export default class Login extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <h3>Sign In</h3>
+        <h3 className="heading">Log In</h3>
 
         <div className="mb-3">
-          <label>Email address</label>
+          <label>Email address: </label>
           <input
             type="email"
             className="form-control"
@@ -53,7 +55,7 @@ export default class Login extends Component {
         </div>
 
         <div className="mb-3">
-          <label>Password</label>
+          <label>Password: </label>
           <input
             type="password"
             className="form-control"
@@ -75,14 +77,11 @@ export default class Login extends Component {
           </div>
         </div>
 
-        <div className="d-grid">
+        <div className="mb-3">
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
         </div>
-        <p className="forgot-password text-right">
-          Forgot <a href="#">password?</a>
-        </p>
       </form>
     )
   }
