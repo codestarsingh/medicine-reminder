@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const SearchBar = ({ searchText, setSearchText }) => {
   const handleInputChange = (event) => {
@@ -6,12 +6,7 @@ const SearchBar = ({ searchText, setSearchText }) => {
   };
 
   return (
-    <input
-      type="text"
-      placeholder="Search patients by name or phone number"
-      value={searchText}
-      onChange={handleInputChange}
-    />
+    <input type="text" placeholder="Search patients by name or phone number" value={searchText} onChange={handleInputChange} />
   );
 };
 
