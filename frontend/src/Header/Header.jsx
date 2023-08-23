@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 import { Link } from 'react-router-dom';
-import "./Header.css";
+import './Header.css';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 
 function Header() {
@@ -8,7 +8,7 @@ function Header() {
         <div>
             <header>
                 <h1><NotificationsActiveIcon /> Medicine Reminder</h1>
-                <Link className="register" to={'/sign-up'}>Register</Link>
+                <Link className='register' to={'/sign-up'}>Register Admin</Link>
             </header>
         </div>
     );
