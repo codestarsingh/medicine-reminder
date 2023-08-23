@@ -1,0 +1,23 @@
+.heading {
+    font-size: 50px;
+    margin-bottom: 80px;
+    color: white;
+    text-align: center;
+    font-family: "McLaren", cursive;
+}
+.mb-3 {
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+    font-family: "McLaren", cursive;
+}
+
+.form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
