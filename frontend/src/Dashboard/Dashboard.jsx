@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Header from '../Header/Header.jsx';
 import SearchBar from '../SearchBar/searchBar.jsx';
 import AddPatientModal from '../Modals/AddPatientModal/AddPatientModal.jsx';
 import DeleteModal from '../Modals/DeleteModal/DeleteModal.jsx'
 import EditModal from '../Modals/EditModal/EditModal.jsx';
 import PhoneModal from '../Modals/PhoneModal/PhoneModal.jsx'
-import Header from '../Header/Header.jsx';
 import './Dashboard.css';
+import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import PhoneForwardedIcon from '@mui/icons-material/PhoneForwarded';
-import AddIcon from '@mui/icons-material/Add';
-import MessageIcon from '@mui/icons-material/Message';
 import SearchIcon from '@mui/icons-material/Search';
+import EmailIcon from '@mui/icons-material/Email';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const Dashboard = () => {
   const [modalEditContent, setEditModalContent] = useState(false);
   const [modalDeleteContent, setDeleteModalContent] = useState(false);
   const [modalPhoneContent, setPhoneModalContent] = useState(false);
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState('');
   const [choosenUser, setChoosenUser] = useState(null);
   const [totalMessages, setTotalMessages] = useState(0);
 
@@ -35,13 +35,12 @@ const Dashboard = () => {
   const fetchPatients = () => {
     axios.get(`http://localhost:5000/getAllUsers?limit=${patientsPerPage}&pages=${currentPage}`)
       .then(response => {
-        if (response.data.messsage = "Data Fetched") {
+        if (response.data.messsage = 'Data Fetched') {
           setTotalMessages(response.data.totalLength);
           const newPatient = [...response.data.arrayList];
           setPatients(newPatient);
         }
-      })
-      .catch(err => console.log(err))
+      }).catch(err => console.log(err))
   };
 
   const openModal = () => {
@@ -90,82 +89,47 @@ const Dashboard = () => {
     } else {
       setPatientsPerPage(6);
     }
-    setSearchText("")
+    setSearchText('')
   };
 
   return (
-    <div className="dashboard-container">
+    <div>
       <Header />
-      <div className="dashboard-top">
-        <button onClick={() => openModal()}><AddIcon fontSize="small" /> Add New Patient</button>
-        <div className="dashboard-searchbar-container">
+      <div className='dashboard-top'>
+        <button onClick={() => openModal()}><AddIcon fontSize='small' /> Add New Patient</button>
+        <div className='dashboard-searchbar-container'>
           <SearchBar searchText={searchText} setSearchText={setSearchText} />
-          <button onClick={searchPatients}><SearchIcon fontSize="small" /> Search</button>
+          <button onClick={searchPatients}><SearchIcon fontSize='small' /> Search</button>
         </div>
-        <button onClick={() => navigate('/messages')}><MessageIcon fontSize="small" /> See All Messages</button>
+        <button onClick={() => navigate('/emails')}><EmailIcon fontSize='small' /> See All Emails</button>
       </div>
-      <div className="dashboard-patients">
+      <div className='dashboard-patients'>
         {patients.map((patient, index) => (
-          <div key={patient._id} className="dashboard-patient">
-            <div className="dashboard-patient-left" style={{
-              backgroundColor: "#272829",
-              padding: "5px",
-              paddingLeft: "10px",
-              borderRadius: "5px",
-              fontFamily: "Bricolage Grotesque, sans-serif"
-            }}>
-              <h3 style={{
-                color: "#fff",
-                fontSize: "24px",
-                marginBottom: "10px"
-              }}>
-                {patient.name}
-              </h3>
-              <p style={{
-                color: "#fff",
-                fontSize: "16px",
-                fontWeight: "bold"
-              }}>
-                {patient.phoneNumber}
-              </p>
-              <div style={{
-                color: "#fff",
-                fontSize: "14px",
-                fontWeight: "bold",
-                marginBottom: "2px",
-              }}>
-                Medicine Details
-              </div>
-              <ul style={{
-                color: "#fff",
-                fontSize: "14px",
-                listStyleType: "none",
-                paddingLeft: "10px"
-              }}>
+          <div className='dashboard-patient'>
+            <div className='dashboard-patient-left'>
+              <h3 className='patient-name'>{patient.name}</h3>
+              <p className='patient-phoneNumber'>{patient.phoneNumber}</p>
+              <p className='patient-email'>{patient.email}</p>
+              <div className='medicine-details-text'>Medicine Details</div>
+              <ul className='medicine-details'>
                 {patient.medicines.map((medicine) => (
-                  <li key={medicine.medicineName} style={{
-                    marginBottom: "5px",
-                  }}>
-                    {medicine.medicineName} {medicine.dosage} {medicine.days}
-                  </li>
+                  <li>{medicine.medicineName} {medicine.dosage} {medicine.days}</li>
                 ))}
               </ul>
             </div>
-            <div className="dashboard-patient-right">
-              <button onClick={() => openDeleteModal(index)} className="danger"><DeleteIcon fontSize="small" /> Delete User</button>
-              <button onClick={() => openEditModal(index)}><EditIcon fontSize="small" /> Edit User Details</button>
-              <button onClick={() => openPhoneModal(index)}><PhoneForwardedIcon fontSize="small" /> Change Phone Number</button>
+            <div className='dashboard-patient-right'>
+              <button onClick={() => openDeleteModal(index)} className='danger'><DeleteIcon fontSize='small' /> Delete User</button>
+              <button onClick={() => openEditModal(index)}><EditIcon fontSize='small' /> Edit User Details</button>
+              <button onClick={() => openPhoneModal(index)}><PhoneForwardedIcon fontSize='small' /> Change Phone Number</button>
             </div>
           </div>
         ))}
       </div>
-      <div className="pagination-container">
-        <ul className="pagination">
+      <div>
+        <ul className='pagination'>
           {pageNumbers.map((number) => (
-            <li key={number} className="page-item">
-              <button onClick={() => paginate(number)} className="page-link">
-                {number}
-              </button>
+            <li key={number}>
+              <button onClick={() => paginate(number)}>{number}</button>
             </li>
           ))}
         </ul>
