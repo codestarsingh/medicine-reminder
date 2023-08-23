@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import './x.css';
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -33,18 +34,22 @@ export default class SignUp extends Component {
       .then((res) => res.json())
       .then((data) => {
         console.log(data, 'userRegister');
+        if (data.status == 'ok') {
+          alert('Sign up successful');
+          window.location.href = './';
+        }
       });
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <h3>Sign Up</h3>
+        <h3 className="heading">Sign Up</h3>
 
         <div className="mb-3">
-          <label>First name</label>
+          <label>First name: </label>
           <input
-            type="text"
+            type="name"
             className="form-control"
             placeholder="First name"
             onChange={(e) => this.setState({ fname: e.target.value })}
@@ -52,9 +57,9 @@ export default class SignUp extends Component {
         </div>
 
         <div className="mb-3">
-          <label>Last name</label>
+          <label>Last name: </label>
           <input
-            type="text"
+            type="name"
             className="form-control"
             placeholder="Last name"
             onChange={(e) => this.setState({ lname: e.target.value })}
@@ -62,7 +67,7 @@ export default class SignUp extends Component {
         </div>
 
         <div className="mb-3">
-          <label>Email address</label>
+          <label>Email address: </label>
           <input
             type="email"
             className="form-control"
@@ -72,7 +77,7 @@ export default class SignUp extends Component {
         </div>
 
         <div className="mb-3">
-          <label>Password</label>
+          <label>Password: </label>
           <input
             type="password"
             className="form-control"
@@ -81,14 +86,11 @@ export default class SignUp extends Component {
           />
         </div>
 
-        <div className="d-grid">
+        <div className="mb-3">
           <button type="submit" className="btn btn-primary">
             Sign Up
           </button>
         </div>
-        <p className="forgot-password text-right">
-          Already registered <a href="/sign-in">sign in?</a>
-        </p>
       </form>
     );
   }
