@@ -1,39 +1,39 @@
-require('dotenv').config()
-require('./models/userDetails');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const cron = require('node-cron');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const cron = require('./cron');
+require('dotenv').config();
+require('./models/userDetails');
 const userRoute = require('./routes/user');
 
 const app = express();
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false })); 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(userRoute);
-
 const User = mongoose.model('userInfo');
+
 const MONGOURL = process.env.MONGOURL;
-const JWT_SECRET = process.env.JWT_SECRET;
 const PORT = process.env.PORT;
+const JWT_SECRET = process.env.JWT_SECRET;
 
 mongoose.set('strictQuery', true);
 mongoose.connect(MONGOURL, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
 });
-mongoose.connection.on("connected", () => {
-  console.log("Connected to MongoDB");
+mongoose.connection.on('connected', () => {
+  console.log('Connected to MongoDB ATLAS');
 });
-mongoose.connection.on("error", err => {
-  console.log("Error connecting", err);
+mongoose.connection.on('error', err => {
+  console.log('Error connecting', err);
 });
-mongoose.connection.on("disconnected", () => {
-  console.log("Mongoose is still disconnected");
+mongoose.connection.on('disconnected', () => {
+  console.log('Mongoose is still disconnected');
 });
 
 app.post('/register', async (req, res) => {
@@ -88,6 +88,8 @@ app.post('/userData', async (req, res) => {
   } catch (error) { }
 });
 
+cron.sendMailAllUser();
+
 app.listen(PORT, () => {
-  console.log(`Server has started on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
