@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
-import './x.css';
+import './login-signup.css';
 
 export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: ""
+      email: '',
+      password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleSubmit(e) {
     e.preventDefault();
     const { email, password } = this.state;
-    console.log(email, password);
-    fetch('http://localhost:5000/login-user', {
+    fetch('http://localhost:5000/login', {
       method: 'POST',
       crossDomain: true,
       headers: {
@@ -25,15 +24,15 @@ export default class Login extends Component {
       body: JSON.stringify({
         email,
         password
-      }),
+      })
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data, 'userRegister');
+        console.log(data, 'adminLogin');
         if (data.status == 'ok') {
           window.localStorage.setItem('token', data.data);
           window.location.href = './dashboard';
-        }else {
+        } else {
           alert('Invalid admin');
         }
       });
@@ -42,47 +41,35 @@ export default class Login extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <h3 className="heading">Log In</h3>
 
-        <div className="mb-3">
+        <h3 className='heading'>Log in</h3>
+        <div className='item'>
           <label>Email address: </label>
           <input
-            type="email"
-            className="form-control"
-            placeholder="Enter email"
+            type='email'
+            className='input'
+            placeholder='Enter email'
             onChange={(e) => this.setState({ email: e.target.value })}
           />
         </div>
-
-        <div className="mb-3">
+        <div className='item'>
           <label>Password: </label>
           <input
-            type="password"
-            className="form-control"
-            placeholder="Enter password"
+            type='password'
+            className='input'
+            placeholder='Enter password'
             onChange={(e) => this.setState({ password: e.target.value })}
           />
         </div>
-
-        <div className="mb-3">
-          <div className="custom-control custom-checkbox">
-            <input
-              type="checkbox"
-              className="custom-control-input"
-              id="customCheck1"
-            />
-            <label className="custom-control-label" htmlFor="customCheck1">
-              Remember me
-            </label>
-          </div>
+        <div className='item'>
+            <input type='checkbox' />
+            <label>Remember me</label>
         </div>
-
-        <div className="mb-3">
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
+        <div className='item'>
+          <button type='submit'>Submit</button>
         </div>
+        
       </form>
-    )
+    );
   }
 }
