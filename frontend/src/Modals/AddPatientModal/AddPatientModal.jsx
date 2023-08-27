@@ -5,6 +5,7 @@ import './AddPatientModal.css';
 const AddPatientModal = ({ closeModal }) => {
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [email, setEmail] = useState("");
   const [medicines, setMedicines] = useState([]);
   const [medicineName, setMedicineName] = useState('');
   const [dosage, setDosage] = useState('');
@@ -26,6 +27,10 @@ const AddPatientModal = ({ closeModal }) => {
   const handleChangePhoneNumber = (event) => {
     setPhoneNumber(event.target.value);
   };
+
+  const handleChangeEmail = (event) => {
+    setEmail(event.target.value);
+  }
 
   const handleChangeMedicineName = (event) => {
     setMedicineName(event.target.value);
@@ -87,7 +92,7 @@ const AddPatientModal = ({ closeModal }) => {
         if (element.days.Saturday == true) dayString += 'Sa';
         return { medicineName: element.medicineName, dosage: element.dosage, days: dayString };
       });
-      axios.post('http://localhost:5000/add-user', { name, phoneNumber, medicines: newMedicineList })
+      axios.post('http://localhost:5000/add-user', { name, phoneNumber, email, medicines: newMedicineList })
         .then(response => {
           if (response.status == 500 || response.data.message == 'Phone number already registered') {
             setError(response.data.message);
@@ -131,6 +136,15 @@ const AddPatientModal = ({ closeModal }) => {
               id='phoneNumber'
               value={phoneNumber}
               onChange={handleChangePhoneNumber}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">Email:</label>
+            <input
+              type="text"
+              id="email"
+              value={email}
+              onChange={handleChangeEmail}
             />
           </div>
           <p className='medicineHeader'>Medicines Added : </p>
