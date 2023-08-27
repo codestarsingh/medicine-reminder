@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Header from '../Header/Header.jsx';
-import SearchBar from '../SearchBar/searchBar.jsx';
-import AddPatientModal from '../Modals/AddPatientModal/AddPatientModal.jsx';
-import DeleteModal from '../Modals/DeleteModal/DeleteModal.jsx'
-import EditModal from '../Modals/EditModal/EditModal.jsx';
-import PhoneModal from '../Modals/PhoneModal/PhoneModal.jsx'
+import Header from '../Header/Header';
+import SearchBar from '../SearchBar/searchBar';
+import AddPatientModal from '../Modals/AddPatientModal/AddPatientModal';
+import DeleteModal from '../Modals/DeleteModal/DeleteModal'
+import EditModal from '../Modals/EditModal/EditModal';
+import PhoneModal from '../Modals/PhoneModal/PhoneModal'
 import './Dashboard.css';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -72,10 +72,8 @@ const Dashboard = () => {
   };
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
   const pageNumbers = [];
-
-  for (let i = 1; i <= Math.ceil(totalMessages / patientsPerPage); i++) {
+  for (var i = 1; i <= Math.ceil(totalMessages / patientsPerPage); i++) {
     pageNumbers.push(i);
   }
 
@@ -84,7 +82,7 @@ const Dashboard = () => {
     setTotalMessages(res.data.totalLength);
     setPatients(res.data.arrayList);
     setCurrentPage(1);
-    if (searchText != "") {
+    if (searchText != '') {
       setPatientsPerPage(res.data.totalLength);
     } else {
       setPatientsPerPage(6);
