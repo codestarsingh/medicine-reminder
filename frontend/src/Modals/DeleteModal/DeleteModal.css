@@ -1,27 +1,27 @@
-.deleteHeader{
+.deleteHeaderm{
     margin-left: 20px;
     font-size: 20px;
     font-weight: 800;
     font-family: "Bricolage Grotesque", sans-serif;
 }
 
-.deleteButtons.danger{
+.deleteButtons.danger {
     background-color: red;
 }
 
-.deleteButtons.danger:hover{
+.deleteButtons.danger:hover {
     background-color: rgb(235, 0, 0);
 }
 
-.safe{
+.safe {
     background-color: rgb(130, 216, 0) !important;
 }
 
-.safe:hover{
+.safe:hover {
     background-color: rgb(146, 243, 0) !important;
 }
 
-.deleteButtons{
+.deleteButtons {
     position: relative;
     display: flex;
     align-items: center;
