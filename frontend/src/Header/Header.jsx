@@ -8,7 +8,7 @@ function Header() {
         <div>
             <header>
                 <h1><NotificationsActiveIcon /> Medicine Reminder</h1>
-                <Link className='register' to={'/sign-up'}>Register Admin</Link>
+                <Link className='signup' to={'/signup'}>Admin Signup</Link>
             </header>
         </div>
     );
