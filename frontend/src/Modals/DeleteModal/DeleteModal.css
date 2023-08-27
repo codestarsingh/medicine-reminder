@@ -1,8 +1,8 @@
-.deleteHeaderm{
+.deleteHeader{
     margin-left: 20px;
     font-size: 20px;
     font-weight: 800;
-    font-family: "Bricolage Grotesque", sans-serif;
+    font-family: 'Bricolage Grotesque', sans-serif;
 }
 
 .deleteButtons.danger {
