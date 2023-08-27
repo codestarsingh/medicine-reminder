@@ -1,0 +1,22 @@
+.heading {
+    color: #fff;
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 80px;
+    font-family: "McLaren", cursive;
+}
+.item {
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: "McLaren", cursive;
+}
+.input {
+    position: relative;
+    font-size: 16px;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    border-radius: 5px;
+}
