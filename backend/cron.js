@@ -1,10 +1,10 @@
-require('dotenv');
 const nodemailer = require('nodemailer');
 const mailgen = require('mailgen');
 const cron = require('node-cron');
-const User = require('./models/user');
+const user = require('./models/user');
+require('dotenv').config();
 
-const sendMailToAllUser = async (emailObj, name, medicineName, dosage) => {
+const sendMailToAllUser = async (email, name, medicineName, dosage) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -32,13 +32,13 @@ const sendMailToAllUser = async (emailObj, name, medicineName, dosage) => {
                     }
                 ]
             },
-            outro: 'Have a nice day'
+            outro: 'Wishing you a happy and prosperous life!'
         }
     }
     let mail = mailGenerator.generate(response);
     const message = {
         from: process.env.USER,
-        to: emailObj,
+        to: email,
         subject: 'Here is the reminder for your medicines',
         html: mail
     }
@@ -60,32 +60,31 @@ const getString = (dayOfWeek) => {
     if (dayOfWeek == 5) return "F";
     return "Sa";
 }
-
 const sendMailAllUser = () => {
     try {
         cron.schedule('41 11 * * *', async function () {
             const date = new Date();
             const dayOfWeek = date.getDay();
             const searchString = getString(dayOfWeek);
-            var usersData = await User.find({ "medicines.days": { $regex: searchString } });
-            if (usersData.length > 0) {
+            var usersToRemind = await user.find({ 'medicines.days': { $regex: searchString } });
+            if (usersToRemind.length > 0) {
                 var emails = [];
                 var name = [];
                 var medicineName = [];
                 var dosage = [];
-                usersData.map((key) => {
+                usersToRemind.map((key) => {
                     emails.push(key.email);
                     name.push(key.name);
                     medicineName.push(key.medicines[0].medicineName);
                     dosage.push(key.medicines[0].dosage);
                 });
-                for(let i=0; i<emails.length; i++) {
+                for (var i = 0; i < emails.length; i++) {
                     sendMailToAllUser(emails[i], name[i], medicineName[i], dosage[i]);
                 }
             }
         });
     } catch (error) {
-        console.log(error.message);
+        console.log(error);
     }
 }
 
