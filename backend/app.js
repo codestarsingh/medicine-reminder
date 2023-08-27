@@ -76,4 +76,4 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-cron.sendMailAllUser(); //this was a good 
+cron.sendMailAllUser();
