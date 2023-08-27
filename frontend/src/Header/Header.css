@@ -4,18 +4,16 @@ header {
     margin-bottom: 50px;
     padding: 12px 32px;
 }
-  
 header h1 {
-    font-family: "McLaren", cursive;
     color: #fff;
-    font-weight: 200;
+    font-family: "McLaren", cursive;
     display: inline;
+    font-weight: 200;
 }
-
-.register {
+.signup {
     color: #fff;
     text-decoration: none;
     position: absolute;
     padding-top: 10px;
-    padding-left: 1000px;
+    padding-left: 1020px;
 }
