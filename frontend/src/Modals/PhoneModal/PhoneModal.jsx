@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const PhoneModal = ({ closeModal, user }) => {
+function PhoneModal({ closeModal, user }) {
     const oldNum = user.phoneNumber;
     const [error, setError] = useState('');
     const [phoneNumberNow, setPhoneNumber] = useState(user.phoneNumber);
