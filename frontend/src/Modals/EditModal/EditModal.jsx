@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const EditPatientModal = ({ closeModal,user }) => {
+function EditPatientModal ({ closeModal,user }) {
   const [name, setName] = useState(user.name);
   const [medicines, setMedicines] = useState(user.medicines);
   const [medicineName, setMedicineName] = useState('');
