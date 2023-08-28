@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from '../Header/Header';
-import SearchBar from '../SearchBar/searchBar';
+import SearchBar from '../SearchBar/SearchBar';
 import AddPatientModal from '../Modals/AddPatientModal/AddPatientModal';
 import DeleteModal from '../Modals/DeleteModal/DeleteModal'
 import EditModal from '../Modals/EditModal/EditModal';
@@ -15,7 +15,7 @@ import PhoneForwardedIcon from '@mui/icons-material/PhoneForwarded';
 import SearchIcon from '@mui/icons-material/Search';
 import EmailIcon from '@mui/icons-material/Email';
 
-const Dashboard = () => {
+function Dashboard() {
   const navigate = useNavigate();
   const [patients, setPatients] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,19 +28,17 @@ const Dashboard = () => {
   const [choosenUser, setChoosenUser] = useState(null);
   const [totalMessages, setTotalMessages] = useState(0);
 
-  useEffect(() => {
-    fetchPatients();
-  }, [currentPage]);
+  useEffect(() => { fetchPatients() }, [currentPage]);
 
   const fetchPatients = () => {
     axios.get(`http://localhost:5000/getAllUsers?limit=${patientsPerPage}&pages=${currentPage}`)
       .then(response => {
-        if (response.data.messsage = 'Data Fetched') {
+        if (response.data.messsage = 'Data fetched') {
           setTotalMessages(response.data.totalLength);
           const newPatient = [...response.data.arrayList];
           setPatients(newPatient);
         }
-      }).catch(err => console.log(err))
+      }).catch(err => console.log(err));
   };
 
   const openModal = () => {
@@ -138,6 +136,6 @@ const Dashboard = () => {
       {modalPhoneContent && <PhoneModal closeModal={closeModal} user={patients[choosenUser]} />}
     </div>
   );
-};
+}
 
 export default Dashboard;
