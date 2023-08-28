@@ -4,16 +4,14 @@ import Dashboard from './Dashboard/Dashboard';
 import Login from './Components/login.component';
 import Signup from './Components/signup.component';
 
-const App = () => {
+function App() {
     return (
         <BrowserRouter>
-            <div>                
-                <Routes>                       
-                    <Route path='/' element={<Login />} />
-                    <Route path='/dashboard' exact element={<Dashboard />} />
-                    <Route path='/signup' element={<Signup />} />
-                </Routes>                    
-            </div>
+            <Routes>                       
+                <Route path='/' element={<Login />} />
+                <Route path='/dashboard' exact element={<Dashboard />} />
+                <Route path='/signup' element={<Signup />} />
+            </Routes>                    
         </BrowserRouter>
     );
 }
