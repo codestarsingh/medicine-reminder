@@ -30,7 +30,6 @@ export default class Login extends Component {
       .then((data) => {
         console.log(data, 'adminLogin');
         if (data.status == 'ok') {
-          window.localStorage.setItem('token', data.data);
           window.location.href = './dashboard';
         } else {
           alert('Invalid admin');
@@ -41,7 +40,6 @@ export default class Login extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-
         <h3 className='heading'>Log in</h3>
         <div className='item'>
           <label>Email address: </label>
@@ -62,13 +60,12 @@ export default class Login extends Component {
           />
         </div>
         <div className='item'>
-            <input type='checkbox' />
-            <label>Remember me</label>
+          <input type='checkbox' />
+          <label>Remember me</label>
         </div>
         <div className='item'>
           <button type='submit'>Submit</button>
         </div>
-        
       </form>
     );
   }
