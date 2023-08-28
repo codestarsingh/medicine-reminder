@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './AddPatientModal.css';
 
-const AddPatientModal = ({ closeModal }) => {
+function AddPatientModal ({ closeModal }) {
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [medicines, setMedicines] = useState([]);
   const [medicineName, setMedicineName] = useState('');
   const [dosage, setDosage] = useState('');
@@ -138,11 +138,11 @@ const AddPatientModal = ({ closeModal }) => {
               onChange={handleChangePhoneNumber}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
+          <div className='form-group'>
+            <label htmlFor='email'>Email:</label>
             <input
-              type="text"
-              id="email"
+              type='text'
+              id='email'
               value={email}
               onChange={handleChangeEmail}
             />
