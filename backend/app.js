@@ -72,8 +72,8 @@ app.post('/signup', async (req, res) => {
   }
 });
 
+cron.sendMailAllUser();
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-cron.sendMailAllUser();
