@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './DeleteModal.css';
 
-const DeleteModal = ({ closeModal, user }) => {
+function DeleteModal ({ closeModal, user }) {
     const [error, setError] = useState('');
     const handleDelete = () => {
         axios.post('http://localhost:5000/delete-user', { phoneNumber: user.phoneNumber })
