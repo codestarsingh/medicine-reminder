@@ -1,15 +1,17 @@
 header {
     background-color: #272829;
-    font-family: "McLaren", cursive;
+    font-family: 'McLaren', cursive;
     margin-bottom: 50px;
     padding: 12px 32px;
 }
+
 header h1 {
     color: #fff;
-    font-family: "McLaren", cursive;
+    font-family: 'McLaren', cursive;
     display: inline;
     font-weight: 200;
 }
+
 .signup {
     color: #fff;
     text-decoration: none;
