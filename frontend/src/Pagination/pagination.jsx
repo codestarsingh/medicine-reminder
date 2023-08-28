@@ -1,7 +1,7 @@
 import React from 'react';
 import './pagination.css';
 
-const Pagination = ({ patientsPerPage, totalPatients, paginate }) => {
+function Pagination ({ patientsPerPage, totalPatients, paginate }) {
   const pageNumbers = [];
   for (var i = 1; i <= Math.ceil(totalPatients / patientsPerPage); i++) {
     pageNumbers.push(i);
@@ -14,10 +14,10 @@ const Pagination = ({ patientsPerPage, totalPatients, paginate }) => {
           <li key={number} className='page-item'>
             <button onClick={() => paginate(number)} className='page-link'>{number}</button>
           </li>
-        ))};
+        ))}
       </ul>
     </div>
   );
-};
+}
 
 export default Pagination;
