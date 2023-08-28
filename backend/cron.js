@@ -52,13 +52,13 @@ const sendMailToAllUser = async (email, name, medicineName, dosage) => {
 }
 
 const getString = (dayOfWeek) => {
-    if (dayOfWeek == 0) return "S";
-    if (dayOfWeek == 1) return "M";
-    if (dayOfWeek == 2) return "T";
-    if (dayOfWeek == 3) return "W";
-    if (dayOfWeek == 4) return "Th";
-    if (dayOfWeek == 5) return "F";
-    return "Sa";
+    if (dayOfWeek == 0) return 'S';
+    if (dayOfWeek == 1) return 'M';
+    if (dayOfWeek == 2) return 'T';
+    if (dayOfWeek == 3) return 'W';
+    if (dayOfWeek == 4) return 'Th';
+    if (dayOfWeek == 5) return 'F';
+    return 'Sa';
 }
 const sendMailAllUser = () => {
     try {
