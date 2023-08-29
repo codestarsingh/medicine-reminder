@@ -92,7 +92,7 @@ function AddPatientModal ({ closeModal }) {
         if (element.days.Saturday == true) dayString += 'Sa';
         return { medicineName: element.medicineName, dosage: element.dosage, days: dayString };
       });
-      axios.post('http://localhost:5000/add-user', { name, phoneNumber, email, medicines: newMedicineList })
+      axios.post('https://medicine-reminder-server.onrender.com/add-user', { name, phoneNumber, email, medicines: newMedicineList })
         .then(response => {
           if (response.status == 500 || response.data.message == 'Phone number already registered') {
             setError(response.data.message);
