@@ -13,7 +13,7 @@ export default class Login extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const { email, password } = this.state;
-    fetch('http://localhost:5000/login', {
+    fetch('https://medicine-reminder-server.onrender.com/login', {
       method: 'POST',
       crossDomain: true,
       headers: {
