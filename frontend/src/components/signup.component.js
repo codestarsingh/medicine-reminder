@@ -14,7 +14,7 @@ export default class Signup extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const { name, email, password } = this.state;
-    fetch('http://localhost:5000/signup', {
+    fetch('https://medicine-reminder-server.onrender.com/signup', {
       method: 'POST',
       crossDomain: true,
       headers: {
