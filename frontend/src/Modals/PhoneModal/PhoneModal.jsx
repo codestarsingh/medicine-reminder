@@ -6,7 +6,7 @@ function PhoneModal({ closeModal, user }) {
     const [error, setError] = useState('');
     const [phoneNumberNow, setPhoneNumber] = useState(user.phoneNumber);
     const handleChangePhoneNumber = () => {
-        axios.post('http://localhost:5000/edit-phoneno', { newPhoneNum: phoneNumberNow, oldNum: oldNum })
+        axios.post('https://medicine-reminder-server.onrender.com/edit-phoneno', { newPhoneNum: phoneNumberNow, oldNum: oldNum })
             .then(response => {
                 if (response.data.message == 'Phone number updated') {
                     setError('');
