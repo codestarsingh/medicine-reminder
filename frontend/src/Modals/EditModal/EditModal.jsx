@@ -81,7 +81,7 @@ function EditPatientModal ({ closeModal,user }) {
             if(element.days.Saturday == true) dayString +='Sa';
             return {medicineName : element.medicineName , dosage : element.dosage , days : dayString};
         })
-        axios.post('http://localhost:5000/edit-user', {name,phoneNumber:user.phoneNumber,medicines:newMedicineList})
+        axios.post('https://medicine-reminder-server.onrender.com/edit-user', {name,phoneNumber:user.phoneNumber,medicines:newMedicineList})
         .then(response => {
             if(response.data.message == 'Data updated'){
                 setError('')
