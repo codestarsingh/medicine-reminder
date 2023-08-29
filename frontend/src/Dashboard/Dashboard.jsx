@@ -31,7 +31,7 @@ function Dashboard() {
   useEffect(() => { fetchPatients() }, [currentPage]);
 
   const fetchPatients = () => {
-    axios.get(`http://localhost:5000/getAllUsers?limit=${patientsPerPage}&pages=${currentPage}`)
+    axios.get(`https://medicine-reminder-server.onrender.com/getAllUsers?limit=${patientsPerPage}&pages=${currentPage}`)
       .then(response => {
         if (response.data.messsage = 'Data fetched') {
           setTotalMessages(response.data.totalLength);
@@ -76,7 +76,7 @@ function Dashboard() {
   }
 
   const searchPatients = async () => {
-    const res = await axios.get(`http://localhost:5000/searchByUserName?name=${searchText}&limit=${patientsPerPage}&pages=${currentPage}`);
+    const res = await axios.get(`https://medicine-reminder-server.onrender.com/searchByUserName?name=${searchText}&limit=${patientsPerPage}&pages=${currentPage}`);
     setTotalMessages(res.data.totalLength);
     setPatients(res.data.arrayList);
     setCurrentPage(1);
