@@ -1,0 +1,32 @@
+<%- include('header') -%>
+
+    <form action='/login' method='post'>
+        <h3 class='heading'>Log in</h3>
+        <div class='item'>
+            <label>Email address: </label>
+            <input
+            type='email'
+            class='input'
+            placeholder='Enter email'
+            name='email'
+            />
+        </div>
+        <div class='item'>
+            <label>Password: </label>
+            <input
+            type='password'
+            class='input'
+            placeholder='Enter password'
+            name='password'
+            />
+        </div>
+        <div class='item'>
+            <input type='checkbox' />
+            <label>Remember me</label>
+        </div>
+        <div class='item'>
+            <button type='submit'>Submit</button>
+        </div>
+    </form>
+
+<%- include('footer') -%>
