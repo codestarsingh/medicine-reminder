@@ -15,6 +15,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(route);
+app.use(express.static('public')); 
+app.set('view engine', 'ejs');
 
 const adminInfo = mongoose.model('adminInfo');
 const MONGOURL = process.env.MONGOURL;
@@ -35,6 +37,18 @@ mongoose.connection.on('error', err => {
 mongoose.connection.on('disconnected', () => {
   console.log('Mongoose is still disconnected');
 });
+
+app.get('/', function(req, res) {
+  res.send('<h1>Server is running...</h1>')
+});
+
+app.get('/signup', function(req, res) {
+  res.render('signup');
+});
+
+app.get('/login', function(req, res) {
+  res.render('login');
+}); 
 
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
