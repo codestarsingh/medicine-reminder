@@ -1,0 +1,37 @@
+<%- include('header') -%>
+
+    <form action='/signup' method='post'>
+        <h3 class='heading'>Sign up</h3>
+        <div class='item'>
+        <label>Name: </label>
+        <input
+            type='Enter name'
+            class='input'
+            placeholder='Name'
+            name='name'
+        />
+        </div>
+        <div class='item'>
+        <label>Email address: </label>
+        <input
+            type='email'
+            class='input'
+            placeholder='Enter email'
+            name='email'
+        />
+        </div>
+        <div class='item'>
+        <label>Password: </label>
+        <input
+            type='password'
+            class='input'
+            placeholder='Enter password'
+            name='password'
+        />
+        </div>
+        <div class='item'>
+        <button type='submit'>Signup</button>
+        </div>
+    </form>
+
+<%- include('footer') -%>
